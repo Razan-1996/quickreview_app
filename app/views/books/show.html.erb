@@ -1,0 +1,67 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+       
+ <p><%= image_tag(@book.poster, size: "200x200", alt: "Book Image") %> </p>
+
+<div class="star-rating" data-score= <%= @avg_review %> ></div>
+
+
+        <div class="star-rating" data-score= <%= @avg_review %> ></div>
+    
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><strong class="white" >Title:</strong></td>
+                <td><div class="white" ><%= @book.book_name %></div></td>
+              </tr>
+              <tr>
+                <td><strong class="white" >Description:</strong></td>
+                <td><div class="white" ><%= @book.description %></div></td>
+              </tr>
+              <tr>
+                <td><strong class="white" >Book length:</strong></td>
+                <td><div class="white" ><%= @book.author_name %></div></td>
+              </tr>
+             
+              <tr>
+                <td><strong class="white" >Rating:</strong></td>
+                <td><div class="white" ><%= @book.rating %></div></strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-7 col-md-offset-1">
+     
+        
+        <% if @book.reviews.blank? %>
+          <h3>No reviews just yet, would you like to add the first!</h3>
+          <% else %>
+          <% @book.reviews.each do |review| %>
+           
+            <p><%= review.rating %>  by <%=review.user.email.split('@')[0].capitalize%></p>
+
+            <p><%= review.comment %> by <%=review.user.email.split('@')[0].capitalize%></p>
+            
+           
+             
+          
+            <% end %>
+            <% end %>
+
+            <%=link_to 'Write a Review', new_book_review_path(@book), class: "btn btn-danger" %>
+
+      </div>
+ 
+    </div>
+  </div>
+</div>
+
+

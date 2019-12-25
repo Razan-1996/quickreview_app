@@ -48,6 +48,7 @@ book.png
 
 
 
-*the most hardest part : A lot of ERRORS.
-*the most fun part : upload the Image
+*the most hardest part : A lot of ERRORS 😭🤕 
+
+*the most fun part : upload the Image 😍
 

@@ -1,24 +1,53 @@
-# README
+# Quick Book Review App :
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# About the app
+Quick Book Review App is easy to read a quick review and descrption about any book Also you can add your favorit book and add rate, comment for any book.
 
-Things you may want to cover:
 
-* Ruby version
+Heres the database for Quick Book Review :
+here 3 moduls :book,review,user
 
-* System dependencies
 
-* Configuration
+![image](first.png)
 
-* Database creation
+# User
+first modul (user) there are 3 type of user :admin ,current user , viewer user
 
-* Database initialization
+1- admin : has Authorization to acess to all functions upload ,delete , edit and show
 
-* How to run the test suite
+2- current user :can access to edit what he/she upload or wrote so they can revirw to delete , edit and show thier reviews 
 
-* Services (job queues, cache servers, search engines, etc.)
+3- viewer user : can watch only
 
-* Deployment instructions
+# Book
+Second modul (book): user can upload ,delete ,edit books ,write a descrption ,title ,author name , category and rating
 
-* ...
+# Review
+**Thierd modul (review):user can write a comment and rating ,delete and edit review
+
+ 
+
+
+# sign up page 
+![image](sign.png)
+
+![image](firstpag.png)
+
+# Homepage
+
+![image](home.png)
+
+![image](hoome.png)
+
+
+
+# Bookpage
+book.png
+![image](book.png)
+
+
+
+
+*the most hardest part : A lot of ERRORS.
+*the most fun part : upload the Image
+

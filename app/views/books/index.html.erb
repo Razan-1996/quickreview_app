@@ -1,33 +1,42 @@
-<h1>All the Books</h1>
-<%= link_to "Add a Book", new_book_path, { :class => "button waves-effect waves-light btn" } %>
-<br><br>
+<div><div>
+</div></div>
 
-<table class="striped bordered">
-  <tr>
-    <th>book name</th>
-    <th>description</th>
-    <th>author name</th>
-    <th>poster</th>
-    <th>rating</th>
-  </tr>
+<% if !user_signed_in? %>
 
-  <% @books.each do |book| %>
-      <tr>
-      <td><%= link_to book.book_name, book_path(book) %></td>
-        <td><%= book.description %></td>
-        <td><%= book.author_name %></td>
-        <td><%= book.poster%></td>
-        <td><%= book.rating%></td>
-	      
-	                 
-        <td><a class="btn-floating btn-large red" href="<%= edit_book_path(book) %>" >
-        <em class="large material-icons">Edit</em>
-       </a>
-     </td>
-     <td> 
-           <%= button_to "Delete", book_path(book.id), method: :delete,
-              data: { confirm: "Are you sure?" } %>
-              </td>
-      </tr>
-  <% end %>
-</table>
+  <h1>Your Favorite Books Reviewed</h1>
+  </br>
+  <p><%= link_to "Sign Up To Write a Review", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+</div>
+<% end %>
+
+<br>
+
+
+
+<div class="row">
+<% @books.each do |book| %>
+    <div class="col-lg-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        
+      <h2 class="card-img-top"> <%= image_tag(book.poster, size: "290x350", alt: "Book Image") %></h2>
+        <div class="card-body">
+  
+          <h4 class="card-title"><%= link_to book.book_name, book_path(book) %>
+            </h4>
+          </h4>
+
+          <p class="card-text"><class="text-muted"> By : 
+           <%= book.author_name %></p>
+
+        <p class="card-text"><small class="text-muted"> Rating :  
+        <%= book.rating %></small> </p>
+        </div>
+      </div>
+    </div>
+
+    <%end%>
+
+
+    
+    
+  

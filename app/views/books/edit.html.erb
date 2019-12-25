@@ -1,9 +1,33 @@
-<h1>Editing Book</h1>
+<h1>Edit Book</h1>
+<%= simple_form_for @book, :html => { :multipart => true} do |f| %>
+    <%= f.select :category_id, @categories %>
+    <br></br>
+      <%= f.label :book_name, 'Book Name'%>
+      <%= f.text_field :book_name %>
+  <br></br>
+      <%= f.label :description, 'Description' %>
+      <%= f.text_field :description %>
+      <br></br>
+      <%= f.label :author_name, 'Author Name' %>
+      <%= f.text_field :author_name %>
+      <br></br>
+      <%= f.label :poster, 'Poster' %>
+      <%= f.text_field :poster %>
+      <br></br>
+      <%= f.label :rating, 'Rating' %>
+      <%= f.text_field :rating %>
+      <br></br>
 
-<%= render 'form', book: @book %>
+  <%= f.submit "Submit", :class => "btn waves-effect waves-light" %>
+<% end %>
+
+
+
+
 
 <%= link_to 'Show', @book %> 
 
 <%= link_to 'Back', books_path %>
 
 <td><%= link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+

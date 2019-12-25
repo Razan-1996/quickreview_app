@@ -1,23 +1,21 @@
-<%= form_for @book do |f| %>
-  <div class="input-field col s6">
-      <%= f.label :book_name, 'book_name'%>
+<%= simple_form_for @book, :html => { :multipart => true } do |f| %>
+    <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a category")%>
+    <br></br>
+      <%= f.label :book_name, 'Book Name'%>
       <%= f.text_field :book_name %>
-  </div>
-  <div class="input-field col s6">
-      <%= f.label :description, 'description' %>
+  <br></br>
+      <%= f.label :description, 'Description' %>
       <%= f.text_field :description %>
-  </div>
-  <div class="input-field col s6">
-      <%= f.label :author_name, 'author_name' %>
+      <br></br>
+      <%= f.label :author_name, 'Author Name' %>
       <%= f.text_field :author_name %>
-  </div>
-  <div class="input-field col s6">
-      <%= f.label :poster, 'poster' %>
+      <br></br>
+      <%= f.label :poster, 'Poster' %>
       <%= f.text_field :poster %>
-  </div>
-  <div class="input-field col s6">
-      <%= f.label :rating, 'rating' %>
+      <br></br>
+      <%= f.label :rating, 'Rating' %>
       <%= f.text_field :rating %>
-  </div>
+      <br></br>
+
   <%= f.submit "Submit", :class => "btn waves-effect waves-light" %>
 <% end %>

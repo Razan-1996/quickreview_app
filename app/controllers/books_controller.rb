@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
-  # before_action :set_book, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!, except: [:index, :show]
-  before_action :authenticate_user!
+  #before_action :find_book, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  #before_action :authenticate_user!
 
 
   # def search
@@ -9,13 +9,14 @@ class BooksController < ApplicationController
   # end
 
   def index
-    @books = Book.all 
+    @books = Book.all.order("created_at DESC") 
   end
 
   
   def show
     @book = Book.find(params[:id])
-    @reviews =@book.reviews
+    @reviews =@book.reviews 
+
 
     # @review = Review.where(book_id: @book.id).order("created_at DESC")
 
@@ -27,10 +28,12 @@ class BooksController < ApplicationController
   end
   def new
     @book=Book.new
+    @categories = Category.all.map{ |c| [c.name, c.id]}
   end
   def create
     @book = Book.new(book_params) 
     @book.user_id = current_user.id
+    @book.category_id =params[:category_id]
     @book.save
     redirect_to @book
     # render 'new'
@@ -38,9 +41,11 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    @categories = Category.all.map{ |c| [c.name, c.id]}
   end
 
   def update
+    #@book.category_id =params[:category_id]
     book = Book.find(params[:id])
     book.update(book_params)
     redirect_to book
@@ -51,12 +56,9 @@ class BooksController < ApplicationController
     redirect_to books_path, :notice=>"your book has been deleted"
   end
 
-
-
-
   private
 
   def book_params
-    params.require(:book).permit(:book_name, :description, :author_name,:poster,:rating)
+    params.require(:book).permit(:book_name, :description, :author_name,:poster,:rating, :category_id)
   end
 end

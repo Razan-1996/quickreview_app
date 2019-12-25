@@ -1,14 +1,13 @@
 
-
 <p id="notice"><%= notice %></p>
-
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
       <div class="col-md-4">
        
- <p><%= image_tag(@book.poster, size: "200x200", alt: "Book Image") %> </p>
+ <p><%= image_tag(@book.poster, size: "260x260", alt: "Book Image") %> </p>
 
+ <h4>Category: <%= @book.category.name %></h4>
 <div class="star-rating" data-score= <%= @avg_review %> ></div>
 
 
@@ -26,7 +25,7 @@
                 <td><div class="white" ><%= @book.description %></div></td>
               </tr>
               <tr>
-                <td><strong class="white" >Book length:</strong></td>
+                <td><strong class="white" >Book Author:</strong></td>
                 <td><div class="white" ><%= @book.author_name %></div></td>
               </tr>
              
@@ -44,24 +43,28 @@
         <% if @book.reviews.blank? %>
           <h3>No reviews just yet, would you like to add the first!</h3>
           <% else %>
-          <% @book.reviews.each do |review| %>
-           
-            <p><%= review.rating %>  by <%=review.user.email.split('@')[0].capitalize%></p>
-
-            <p><%= review.comment %> by <%=review.user.email.split('@')[0].capitalize%></p>
-            
-           
-             
           
-            <% end %>
+           
+            <%= render @book.reviews %>
+           
             <% end %>
 
             <%=link_to 'Write a Review', new_book_review_path(@book), class: "btn btn-danger" %>
 
+
       </div>
- 
     </div>
   </div>
 </div>
 
+<%= link_to "Edit", edit_book_path(@book) %>
 
+<% if user_signed_in? %>
+<% if @book.user_id == current_user.id %>
+<%= button_to "Delete", book_path(@book), method: :delete,
+data: { confirm: "Are you sure?" } %>
+<%= link_to 'Back', books_path %>
+
+<% end %>
+<% end %>
+ 

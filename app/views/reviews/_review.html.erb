@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= review.rating %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= review.comment %>
+</p>
+
+<%= link_to "Edit", "#{@book.id}/reviews/#{review.id}/edit" %>
+<%= link_to "Delete", "reviews/#{@book.id}/#{review.id}", method: :delete,
+data: { confirm: "Are you sure?" } %>
+
+
+

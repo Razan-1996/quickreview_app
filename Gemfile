@@ -20,7 +20,7 @@ gem 'simple_form', '~> 5.0', '>= 5.0.1'
 # gem 'image_processing', '~> 1.2'
 gem 'paperclip', '~> 6.1'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 group :development, :test do

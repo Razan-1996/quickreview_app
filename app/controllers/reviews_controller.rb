@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     # @review = Review.create(review_params)
  #    @review.book_id = params[:book_id]
     
-    book = Book.find(params[:id])
+    book = Book.find(params[:book_id])
     @review=Review.new(review_params)
     @review.user_id = current_user.id
     @review.save
@@ -42,7 +42,7 @@ class ReviewsController < ApplicationController
   
   
   def update
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:book_id])
     puts "review id"
     puts @review.id
     @review.update(review_params)
@@ -71,7 +71,7 @@ def set_book
 end
 
     def review_params
-      params.require(:review).permit(:id, :comment,:rating)
+      params.require(:review).permit(:id, :comment,:rating,:book_id, :user_id)
     end
 end
 

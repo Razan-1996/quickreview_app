@@ -1,4 +1,4 @@
-<%= simple_form_for @review, :url => "books/reviews" do |f| %>
+<%= simple_form_for @review, :url => book_review_path, method: :patch do |f| %>
   <%= f.hidden_field :book_id, :value => @book.id %>
    <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="input-field col s6">
